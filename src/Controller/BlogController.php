@@ -24,7 +24,7 @@ class BlogController extends AbstractController
     /**
      * @Route("/blog/show/{page}", requirements={"page"="[a-z0-9-]+"}, name="blog_show")
      */
-    public function show($page = "Sans Titre")
+    public function show($page = "Article Sans Titre")
     {
         $page = str_replace("-", " ", $page);
         $page = ucwords(strtolower($page));
