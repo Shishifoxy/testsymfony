@@ -61,6 +61,11 @@ class Article
         return $this;
     }
 
+    /**
+     * @ORM\ManyToOne(targetEntity="App\Entity\Category", InversedBy="articles")
+     * @ORM\JoinColumn(nullable=false)
+     */
+
     public function getCategory(): ?Category
     {
         return $this->category;
