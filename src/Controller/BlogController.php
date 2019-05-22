@@ -4,9 +4,13 @@ namespace App\Controller;
 
 use App\Entity\Article;
 use App\Entity\Category;
+use App\Form\ArticleType;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
+use Symfony\Component\HttpFoundation\Request;
+
+
 
 /**
 * @Route("/Blog")
@@ -28,10 +32,17 @@ class BlogController extends AbstractController
                 'No article found in article\'s table.'
             );
         }
+        $form = $this->createForm(
+            ArticleType::class,
+            null,
+            ['method' => Request::METHOD_GET]
+        );
 
         return $this->render(
-            'blog/index.html.twig',
-            ['articles' => $articles]
+            'blog/index.html.twig', [
+                'articles' => $articles,
+                'form' => $form->createView(),
+            ]
         );
     }
 
@@ -94,6 +105,7 @@ class BlogController extends AbstractController
         ]);
 
     }
+
 
 
 
