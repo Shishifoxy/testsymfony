@@ -1,0 +1,32 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Tag{% endblock %}
+
+{% block body %}
+    <h1>Tag</h1>
+
+    <table class="table">
+        <tbody>
+            <tr>
+                <th>Name</th>
+                <td>{{ tag.name }}</td>
+            </tr>
+        </tbody>
+    </table>
+
+    <strong>Articles with this tag :</strong>
+    <ul>
+        {% for article in tag.articles %}
+            <li><a href="{{ path('article_show', {'id': article.id}) }}">{{ article.title }}</a></li>
+
+        {% else %}
+            <li>No articles for this article</li>
+        {% endfor %}
+    </ul>
+
+    <a href="{{ path('tag_index') }}">back to list</a>
+
+    <a href="{{ path('tag_edit', {'id': tag.id}) }}">edit</a>
+
+    {{ include('tag/_delete_form.html.twig') }}
+{% endblock %}
