@@ -24,6 +24,7 @@ class ArticleType extends AbstractType
             'choice_label' => 'name',
             'expanded' => "true",
             'multiple' => "true",
+            'by_reference' => false
         ]);
     }
 
